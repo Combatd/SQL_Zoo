@@ -88,9 +88,16 @@ def neighbors_of_certain_b_countries
       continent
     FROM
       countries
-    WHERE 
+    WHERE
       name = 'Belize'
-      AND
+    )
+    OR
+    continent =
+    (SELECT
+      continent
+    FROM
+      countries
+    WHERE
       name = 'Belgium'
     )
   SQL
