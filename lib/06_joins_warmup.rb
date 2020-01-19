@@ -95,7 +95,7 @@ def glenn_close_id
       id
     FROM
       actors
-    where
+    WHERE
       name = 'Glenn Close'
   SQL
 end
@@ -116,6 +116,16 @@ def casablanca_cast
   # Obtain the cast list for 'Casablanca'. Use the id value that you obtained
   # in the previous question directly in your query (for example, id = 1).
   execute(<<-SQL)
+    SELECT
+      name
+    FROM
+      actors
+    JOIN
+      castings
+      ON
+      actors.id = castings.actor_id
+    WHERE
+      castings.movie_id = 27
   SQL
 end
 
