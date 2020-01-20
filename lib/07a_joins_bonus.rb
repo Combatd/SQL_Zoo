@@ -51,7 +51,7 @@ def exodus_artist
       ON
       t.album = a.asin
     WHERE
-      t.son = 'Exodus'
+      t.song = 'Exodus'
   SQL
 end
 
