@@ -157,7 +157,9 @@ def best_value
     FROM
       albums a
     JOIN
-      tracks t ON t.album = a.asin
+      tracks t 
+      ON 
+      t.album = a.asin
     GROUP BY
       a.asin
     HAVING
@@ -170,6 +172,21 @@ def top_track_counts
   # tracks. List the top 10 albums. Select both the album title and the track
   # count, and order by both track count and title (descending).
   execute(<<-SQL)
+    SELECT
+      a.title,
+      count(t.song)
+    FROM
+      albums a
+    JOIN
+      tracks t 
+      ON 
+      t.album = a.asin
+    GROUP BY 
+      a.title
+    ORDER BY
+      COUNT(t.song) DESC, a.title DESC
+    LIMIT 10
+
   SQL
 end
 
