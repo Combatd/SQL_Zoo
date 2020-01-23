@@ -106,7 +106,19 @@ def dept_staff_counts
   # the number of staff. Structure your JOIN to ensure that the
   # Engineering department is listed.
   execute(<<-SQL)
-    
+    SELECT
+      depts.name,
+      COUNT(teachers.name)
+    FROM
+      teachers
+    FULL JOIN
+      depts 
+      ON
+      teachers.dept_id = depts.id
+    WHERE
+      depts.name IS NOT NULL
+    GROUP BY  
+      depts.name
   SQL
 end
 
