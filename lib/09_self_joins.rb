@@ -17,6 +17,10 @@ require_relative './sqlzoo.rb'
 def num_stops
   # How many stops are in the database?
   execute(<<-SQL)
+    SELECT
+      COUNT(stops.id) AS number_of_stops
+    FROM
+      stops
   SQL
 end
 
